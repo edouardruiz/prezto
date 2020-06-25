@@ -38,3 +38,6 @@ if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+if which pip > /dev/null; then
+  eval "`pip completion --zsh`"
+fi
