@@ -41,3 +41,6 @@ fi
 if which pip > /dev/null; then
   eval "`pip completion --zsh`"
 fi
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/terraform terraform
