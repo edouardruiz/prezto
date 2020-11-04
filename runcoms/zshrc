@@ -42,5 +42,9 @@ if which pip > /dev/null; then
   eval "`pip completion --zsh`"
 fi
 
+if which rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
