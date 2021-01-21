@@ -49,6 +49,8 @@ fi
 autoload -U +X bashcompinit && bashcompinit
 complete -o nospace -C /usr/local/bin/terraform terraform
 
+. ~/.fastlane/completions/completion.sh
+
 export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(xcrun --show-sdk-path)/usr/lib -L/usr/local/opt/zlib/lib -L$(brew --prefix libffi)/lib"
 export CPPFLAGS="-I/usr/local/opt/zlib/include  -I$(brew --prefix libffi)/include"
