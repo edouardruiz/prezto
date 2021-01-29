@@ -51,9 +51,14 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 . ~/.fastlane/completions/completion.sh
 
+export JAVA_HOME=/usr/local/opt/openjdk
+export PATH=$PATH:$JAVA_HOME/bin
+
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator
+
 export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(xcrun --show-sdk-path)/usr/lib -L/usr/local/opt/zlib/lib -L$(brew --prefix libffi)/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include  -I$(brew --prefix libffi)/include -I/usr/local/opt/openjdk/include"
+export CPPFLAGS="-I/usr/local/opt/zlib/include  -I$(brew --prefix libffi)/include -I$JAVA_HOME/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 export OPENBLAS="$(brew --prefix openblas)"
-export PATH=$PATH:/usr/local/opt/openjdk/bin
