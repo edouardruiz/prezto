@@ -53,6 +53,7 @@ complete -o nospace -C /usr/local/bin/terraform terraform
 
 export CFLAGS="-I$(brew --prefix openssl)/include -I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include"
 export LDFLAGS="-L$(brew --prefix openssl)/lib -L$(brew --prefix readline)/lib -L$(xcrun --show-sdk-path)/usr/lib -L/usr/local/opt/zlib/lib -L$(brew --prefix libffi)/lib"
-export CPPFLAGS="-I/usr/local/opt/zlib/include  -I$(brew --prefix libffi)/include"
+export CPPFLAGS="-I/usr/local/opt/zlib/include  -I$(brew --prefix libffi)/include -I/usr/local/opt/openjdk/include"
 export PKG_CONFIG_PATH="/usr/local/opt/zlib/lib/pkgconfig"
 export OPENBLAS="$(brew --prefix openblas)"
+export PATH=/usr/local/opt/openjdk/bin:$PATH
