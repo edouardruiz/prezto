@@ -38,13 +38,13 @@ zstyle ':prezto:load' pmodule \
   'spectrum' \
   'utility' \
   'completion' \
+  'history-substring-search' \
   'prompt' \
   'archive' \
   'autosuggestions' \
   'command-not-found' \
   'directory' \
   'git' \
-  'history-substring-search' \
   'homebrew' \
   'node' \
   'osx' \
