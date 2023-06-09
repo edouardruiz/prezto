@@ -5,9 +5,89 @@
 #   Sorin Ionescu <sorin.ionescu@gmail.com>
 #
 
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # Source Prezto.
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
 # Customize to your needs...
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# pyenv
+
+if which pip > /dev/null; then
+  eval "$(pip completion --zsh)"
+fi
+
+# heroku
+
+if which heroku > /dev/null; then
+  eval "$(heroku autocomplete:script zsh)"
+fi
+
+# Terraform
+
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /opt/homebrew/bin/terraform terraform
+
+# Fastlane
+
+if [[ -s "~/.fastlane/completions/completion.sh" ]]; then
+  . "~/.fastlane/completions/completion.sh"
+fi
+
+# homebrew-command-not-found
+
+HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
+if [ -f "$HB_CNF_HANDLER" ]; then
+  source "$HB_CNF_HANDLER";
+fi
+
+# Java
+
+export JAVA_HOME=`brew --prefix openjdk`
+
+# Android
+
+export ANDROID_SDK_ROOT=~/Library/Android/sdk
+
+# Others
+
+# export PATH=$(brew --prefix openssl@1.1)/bin:$(brew --prefix curl)/bin:$JAVA_HOME/bin:$ANDROID_SDK_ROOT/tools/bin:$ANDROID_SDK_ROOT/platform-tools:$ANDROID_SDK_ROOT/emulator:$PATH
+
+# export CFLAGS="-I$(brew --prefix readline)/include -I$(xcrun --show-sdk-path)/usr/include $(geos-config --cflags)"
+# export LDFLAGS="-L$(brew --prefix curl)/lib -L$(brew --prefix openssl@1.1)/lib -L$(brew --prefix readline)/lib -L$(xcrun --show-sdk-path)/usr/lib -L$(brew --prefix libffi)/lib -L$(brew --prefix openblas)/lib -L$(brew --prefix zlib)/lib -L$(brew --prefix graphviz)/lib -L$(brew --prefix libffi)/lib $(geos-config --ldflags) -lgeos_c"
+# export CPPFLAGS="-I$(brew --prefix curl)/include -I$(brew --prefix openssl@1.1)/include -I$(brew --prefix libffi)/include -I$JAVA_HOME/include -I$(brew --prefix openblas)/include -I$(brew --prefix zlib)/include -I$(brew --prefix graphviz)/include -I$(brew --prefix libffi)/include"
+# export PKG_CONFIG_PATH="$(brew --prefix curl)/lib/pkgconfig:$(brew --prefix openssl@1.1)/lib/pkgconfig:$(brew --prefix libffi)/lib/pkgconfig:$(brew --prefix openblas)/lib/pkgconfig:$(brew --prefix zlib)/lib/pkgconfig:$(brew --prefix libffi)/libffi/lib/pkgconfig"
+
+# export OPENBLAS="$(brew --prefix openblas)"
+
+# export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@1.1)"
+
+# export PYCURL_SSL_LIBRARY=openssl
+
+export PATH="$HOME/.local/bin:$PATH"
+
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/Users/edouardruiz/.pyenv/versions/anaconda3-2023.03/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/Users/edouardruiz/.pyenv/versions/anaconda3-2023.03/etc/profile.d/conda.sh" ]; then
+#         . "/Users/edouardruiz/.pyenv/versions/anaconda3-2023.03/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/Users/edouardruiz/.pyenv/versions/anaconda3-2023.03/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
