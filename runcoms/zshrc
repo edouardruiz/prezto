@@ -91,3 +91,5 @@ export PATH="$HOME/.local/bin:$PATH"
 # fi
 # unset __conda_setup
 # # <<< conda initialize <<<
+
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
