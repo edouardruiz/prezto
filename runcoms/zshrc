@@ -45,6 +45,11 @@ if [[ -s "~/.fastlane/completions/completion.sh" ]]; then
   . "~/.fastlane/completions/completion.sh"
 fi
 
+# rust
+if [[ -s "$HOME/.cargo/env" ]]; then
+  . "$HOME/.cargo/env"
+fi
+
 # homebrew-command-not-found
 
 HB_CNF_HANDLER="$(brew --repository)/Library/Taps/homebrew/homebrew-command-not-found/handler.sh"
